@@ -21,9 +21,11 @@ public class DataBaseConnect2 {
 		}
 	}
 	
+	
+	
 	public static void insertData(Connection con){
 		//id, fname, lastname, email, password, dob, status, role
-		String sql = "INSERT INTO users VALUES (default, ?, ?, ?, ?, ?, ?,?)";
+		String sql = "INSERT INTO users VALUES (default, ?, ?, ?, ?, ?, ?, ?)";
 		Scanner sc = new Scanner(System.in);
 		try(PreparedStatement stmt = con.prepareStatement(sql)){
 			System.out.println("Enter first name: ");
@@ -57,6 +59,7 @@ public class DataBaseConnect2 {
 			stmt.setString(4, password);
 			stmt.setDate(5, sDate);
 			
+			
 			int count = stmt.executeUpdate();
 			System.out.println("Rows Affected: " + count);
 		}catch(Exception e) {
@@ -86,6 +89,43 @@ public class DataBaseConnect2 {
 			e1.printStackTrace();
 		}
 		
+	}
+
+	public static void deleteVoters(Connection con) throws SQLException {
+		String sql = "DELETE FROM users WHERE role = 'voter' and id = ?";
+		Scanner sc = new Scanner(System.in);
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			System.out.println("Enter id of the voter you want to delete:");
+			int id = sc.nextInt();
+			pstmt.setInt(1, id);
+			int count  = pstmt.executeUpdate();
+			System.out.println("Rows Affected: " + count);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void changeStatus(Connection con) throws SQLException{
+		String sql = "UPDATE users SET status = 1 WHERE role = 'voter' and id = ?";
+		Scanner sc = new Scanner(System.in);
+		try(PreparedStatement stmt = con.prepareStatement(sql)){
+			System.out.println("Enter id of the voter you want to delete:");
+			int id = sc.nextInt();
+			stmt.setInt(1, id);
+			int count  = stmt.executeUpdate();
+			System.out.println("Rows Affected: " + count);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void changeNameAndDob(Connection con) throws SQLException{
+		String sql = "UPDATE users SET first_name = ?, last_name = ?, dob = ? WHERE role = 'voter'"
+				+ "and id = ?";
+		Scanner sc = new Scanner(System.in);
+		try(PreparedStatement stmt = con.prepareStatement(sql)){
+			System.out.println();
+		}
 	}
 	
 	
