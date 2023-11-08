@@ -86,8 +86,8 @@ public class Tester {
 	 		}
 	 		break;
 	 	case 6:
-	 		
-	 		break;
+	 		System.out.println("Total no of books in the list = "+arr.size()); 
+			break;
 	 		
 	 	}
 	   

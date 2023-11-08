@@ -99,11 +99,25 @@ public class Tester {
 				break;
 	
 			case 7: // Sort books in ascending order.
+				Collections.sort(arr); 
+					System.out.println("Books list sorted by ISBN(Ascending)successfully...");
+					break;
 				
-				break;
 			case 8:
-				break;
+				class BooksDescComparator implements Comparator<Book>{
+						@Override
+						public int compare(Book arg0, Book arg1) {
+							int diff = -Double.compare(arg0.getPrice(), arg1.getPrice());
+							return diff;
+						}
+					}
+					Collections.sort(arr,new BooksDescComparator());
+					System.out.println("Books list sorted by ISBN (Descending) successfully...");
+					break;
+
 			case 9:
+				Collections.reverse(arr);
+				System.out.println("List reversed successfully");
 				break;
 				
 			}
