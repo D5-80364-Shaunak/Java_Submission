@@ -22,6 +22,9 @@ public class Tester {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
+		
+		
+		
 		do {
 			System.out.println("0. Exit.");
 			System.out.println("1. Insert candidates.");
@@ -33,6 +36,7 @@ public class Tester {
 			System.out.println("7. total votes partywise");
 			System.out.println("Enter your choice.");
 			choice = sc.nextInt();
+			
 			
 			switch (choice) {
 			case 1:
@@ -92,12 +96,18 @@ public class Tester {
 					String party5 = sc.next();
 					listCd = cd.findByParty(party5);
 					listCd.forEach(c -> System.out.println(c));
+					
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
 				break;
 				
 			case 6:
+				try(CandidateDAO cd = new CandidateDAO()){
+					List<CandidatePOJO> listAll;
+					
+					
+				}
 				
 				break;
 				
